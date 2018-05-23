@@ -1,0 +1,93 @@
+body{
+	font-size:20px;
+	border:solid black;
+	width:500px;
+	margin:auto;
+	padding:20px;
+}
+.labels{
+	width:180px;
+	float:left;
+	margin-top:10px;	
+	text-align:left;
+	padding-right:10px;
+	clear:both;  
+	margin-left:10px;
+}
+.textbox{
+    float:left;
+	margin-top:10px;
+	 	
+}
+.languages{
+	float:left;
+	clear:both;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:0px;		
+}
+span{
+	float:right;	
+}
+.rating_text{
+	margin-right:40px;
+}
+.slider{
+	float:left;
+	clear:both;
+	width:220px;
+	margin-left:20px;
+}
+#addrow{	
+	position:relative;
+	top:125px;
+	left:175px;
+}
+#div_buttons{
+	clear: left;	
+	margin-bottom:10px;
+	margin-top: 30px;
+}
+
+#submit,#display{
+	margin-left: 80px;
+	font-size:15px;
+    
+}
+
+
+#tone, #tone td,#tone th {
+	padding: 5px;
+	clear: left;
+	border: 2px solid black;
+	border-collapse: collapse;
+	text-align:center;
+}
+fieldset{
+	width:335px;
+	clear:both;
+	padding:0px;
+	height:150px;
+}
+.delete{	
+	float:right;
+	margin:0px;
+	padding:0px;
+}
+.alert_text{
+	clear:both;
+	margin-left:200px;
+	padding:0px;
+	margin-bottom:0px;
+	color:red;
+}
+#alert_language{
+	float:left;
+	margin:0px;
+}
+#data {
+	margin-top:10px;
+	max-width:470px;
+	overflow:scroll;
+}
+

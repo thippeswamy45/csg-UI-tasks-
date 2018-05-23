@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+		<title>home page</title>
+	<script>
+	
+	
+	var elementRef={};
+	
+	$(document).ready(function(){
+		$(".submit").click( function () {
+			var fn=$("#text_fn").val();
+			var ln=$("#text_ln").val();
+			var addr=$("#text_address").val();	
+			var email=$("#text_email").val();
+			var pn=$("#text_pn").val();
+			var string_html="<tr><td class='fn'>"+fn+"</td><td class='ln'>"+ln+"</td><td class='addr'>"+addr+
+			"</td><td class='pn'>"+pn+"</td><td class='email'>"+email+"</td><td id='actions'>"+
+			"<input type='button' class='delete' value='Delete' ><input type='button' class='edit' value='Edit'>"+
+			"</td></tr>";
+	
+			$("table tbody").append(string_html);
+		
+  
+		});
+
+		$("tbody").on('click',".delete", function () {
+			$(this).parent().parent().remove(); 
+  
+		});
+	
+	
+	
+		$("tbody").on('click',".edit", function () {
+		
+			elementRef= this;
+			var fn=$(elementRef).parent().parent().find(".fn").text();
+			var ln=$(elementRef).parent().parent().find(".ln").text();
+			var address=$(elementRef).parent().parent().find(".addr").text();
+			var pn=$(elementRef).parent().parent().find(".pn").text();
+			var email=$(elementRef).parent().parent().find(".email").text();
+			$("#text_fn").val(fn),$("#text_ln").val(ln),$("#text_address").val(address),$("#text_pn").val(pn),$("#text_email").val(email);
+	
+		});
+	
+	
+		$(".update").click( function () {
+			var fn=$(elementRef).parent().parent().find(".fn").text($("#text_fn").val());
+			var ln=$(elementRef).parent().parent().find(".ln").text($("#text_ln").val());
+			var email=$(elementRef).parent().parent().find(".email").text($("#text_email").val());
+			var address=$(elementRef).parent().parent().find(".addr").text($("#text_address").val());
+			var pn=$(elementRef).parent().parent().find(".city").text($("#text_city").val());
+			
+  
+		});
+	});
+	
+	
+	
+	</script>
+	
+</head>
+<body>
+	<form action="">
+		<label for="fn">Firstname<span>:</span></label>
+		<input id="text_fn" name="firstname" type="text" value=""> 
+		<label for="ln">Lastname<span>:</span></label>
+		<input id="text_ln" name="lastname" type="text" value=""> 
+		<label for="address">Address<span>:</span></label> 
+		<input id="text_address" name="lastname" type="text" value=""> 
+		<label for="phone no">Phone no<span>:</span></label>
+		<input id="text_pn" name="lastname" type="text" value="">
+		<label for="email">Email<span>:</span></label> 
+		<input id="text_email" name="lastname" type="email" value="">
+		<div>
+			<input class="submit"  type="button" value="Submit"> 
+			<input class="reset" type="reset" value="Reset">
+			<input class="update"  type="button" value="Update">
+		</div>
+	</form>
+	<table id="tone" >
+		<thead>
+			<tr>
+				<th>firstname</th>
+				<th>lastname</th>
+				<th>address</th>
+				<th>phone no</th>
+				<th>email</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+#brand_symbol{
+	height:20px;
+}
+#brand_user{
+	margin-left: 75px;
+}
+.navbar_right_user{
+	padding-right:106px;
+}
+.navbar-right li{
+	padding-left:10px;	
+	padding-top:5px;
+	padding-bottom:5px;
+}
+#search_box{
+	margin-top:5px;
+}
+#bell{
+	margin-top:15px;
+}
+.container_fluid_user{
+	background-color:skyblue;
+}
+.row_user{
+	margin-top:10px;
+}
+.col_heading{
+	margin-top:10px;
+	text-align:center;
+}
+.col_image{
+	height:200px !important;
+}
+.thumbnail_user{
+	border:none;
+	box-shadow:none;
+}
+
+.read_more{
+	color:red;
+	text-decoration:none;
+}
+
+.footer_user{
+	padding-left:108px;
+	font-size:15px;
+	padding-bottom:15px;
+	padding-top:1px;
+	background-color:blue;	
+	color:white;
+}

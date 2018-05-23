@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+	var i=1;
+	var j={};
+	function loadTable(fn,ln,addr,pn,email)
+	{
+	var string_html="<tr data-id="+i+"><td class='fn'>"+fn+"</td><td class='ln'>"+ln+"</td><td class='addr'>"+addr+"</td><td class='pn'>"+pn+"</td><td class='email'>"+email+
+	"</td><td id='actions'><button id='delete' onclick='removeRow(this);'>Delete</button><button id='edit' onclick='editData(this);'>Edit<\/button><\/td>";
+	i+=1;
+	$("table").append(string_html);
+	}
+
+
+	function removeRow(index){
+	  $(index).parent().parent().remove();  
+	}
+	function editData(index){
+	j= index;
+	var fn=$(index).parent().parent().find(".fn").text();
+	var ln=$(index).parent().parent().find(".ln").text();
+	var address=$(index).parent().parent().find(".addr").text();
+	var pn=$(index).parent().parent().find(".pn").text();
+	var email=$(index).parent().parent().find(".email").text();
+	$("#text_fn").val(fn),$("#text_ln").val(ln),$("#text_address").val(address),$("#text_pn").val(pn),$("#text_email").val(email);
+	}
+	function updateTable(fn,ln,addr,pn,email)
+	{
+	var fn=$(j).parent().parent().find(".fn").text(fn);
+	var ln=$(j).parent().parent().find(".ln").text(ln);
+	var address=$(j).parent().parent().find(".addr").text(addr);
+	var pn=$(j).parent().parent().find(".pn").text(pn);
+	var email=$(j).parent().parent().find(".email").text(email);
+	}  
+	</script>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+</head>
+<body>
+	<form action="">
+		<label for="fn">Firstname<span>:</span></label> <input id="text_fn" name="firstname" type="text" value=""> <label for="ln">Lastname<span>:</span></label> <input id="text_ln" name="lastname" type="text" value=""> <label for="address">Address<span>:</span></label> <input id="text_address" name="lastname" type="text" value=""> <label for="phone no">Phone no<span>:</span></label> <input id="text_pn" name="lastname" type="text" value=""> <label for="email">Email<span>:</span></label> <input id="text_email" name="lastname" type="email" value="">
+		<div>
+			<input id="submit" onclick='loadTable($("#text_fn").val(),$("#text_ln").val(),$("#text_address").val(),$("#text_pn").val(),$("#text_email").val());' type="button" value="Submit"> <input id="reset" type="reset" value="Reset"> <input id="update" onclick='updateTable($("#text_fn").val(),$("#text_ln").val(),$("#text_address").val(),$("#text_pn").val(),$("#text_email").val());' type="button" value="update">
+		</div>
+	</form>
+	<table>
+		<tr>
+			<th>firstname</th>
+			<th>lastname</th>
+			<th>address</th>
+			<th>phone no</th>
+			<th>email</th>
+			<th>actions</th>
+		</tr>
+	</table>
+</body>
+</html>

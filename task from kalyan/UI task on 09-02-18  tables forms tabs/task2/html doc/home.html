@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>	
+		$(document).ready(function(){
+		   $("#insert1").click(function(){ 
+		   
+			   var position=$("#text_position").val();
+			   if(position>0)
+			   {
+				   var uid=$("#text_uid").val();
+				   var fn=$("#text_fn").val();
+				   var ln=$("#text_ln").val();
+				   var addr=$("#text_address").val();
+				   var city=$("#text_city").val();
+				   var string_html="<tr><td class='uid'>"+uid+
+				   "</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+
+				   "</td><td class='addr'>"+addr+
+				   "</td><td class='city'>"+city+"</td></tr>";
+				   
+				   $("#tone tbody tr:nth-child("+position+")").before(string_html);
+			   }
+		   });
+		   
+		   $("#insert2").click(function(){ 
+				var position=$("#text_position").val();
+				if(position>0)
+			    {
+				   var uid=$("#text_uid").val();
+				   var fn=$("#text_fn").val();
+				   var ln=$("#text_ln").val();
+				   var addr=$("#text_address").val();
+				   var city=$("#text_city").val();
+				   var string_html="<tr><td class='uid'>"+
+				   uid+"</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+"</td><td class='addr'>"+
+				   addr+"</td><td class='city'>"+city+"</td></tr>";
+				   $("#tone tbody tr:nth-child("+position+")").after(string_html);
+				}
+		   });	
+		});
+	</script>
+	
+</head>
+<body>
+	<form action="">
+		<table id="tone">
+			<thead>
+				<tr id="tr1">			
+					<th>U id</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>address</th>			
+					<th>city</th>			
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				
+					<td class="uid">abc1</td>
+					<td class="fn">xyz1</td>
+					<td class="ln">a1</td>
+					<td class="addr">pqr1</td>
+					<td class="city">bangalore</td>
+				</tr>
+				<tr>
+					
+					<td class="uid">abc2</td>
+					<td class="fn">xyz2</td>
+					<td class="ln">a2</td>
+					<td class="addr">pqr2</td>
+					<td class="city">tumkur</td>
+				</tr>
+				<tr>
+				
+					<td class="uid">abc3</td>
+					<td class="fn">xyz3</td>
+					<td class="ln">a3</td>
+					<td class="addr">pqr3</td>
+					<td class="city">mysore</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<label class="labels" >U id<span >:</span></label>
+		<input type="text" class="textbox"  id="text_uid" value="">
+  
+		<label class="labels" >Firstname<span>:</span></label>
+		<input type="text" class="textbox" id="text_fn" value="">
+  
+		<label class="labels" >Lastname<span>:</span></label>
+		<input type="text" class="textbox" id="text_ln"  value="">
+  
+		<label class="labels" >Address<span >:</span></label>
+		<textarea  rows="3" cols="22" class="textbox" id="text_address"></textarea>
+  
+		<label class="labels" >City<span>:</span></label>
+		<input type="text"  class="textbox" id="text_city" >
+		
+		<label class="labels" >Position<span>:</span></label>
+		<input type="text"  class="textbox" id="text_position" >
+		<div>
+			<input id="insert1" type="button"  value="Isert before" >
+			<input id="insert2" type="button"  value="Isert after" >
+		</div>
+	</form> 
+</body>
+</html>

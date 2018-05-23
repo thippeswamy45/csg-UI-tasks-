@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>home page</title>
+<script>
+</script>
+<link rel="stylesheet" href="../css doc/style_home.css">
+</head>
+<body>
+<header>
+<h1> examples</h1>
+</header>
+<section id="menu_section">
+<div id="link_div">
+<ul>
+<li><button  class="menu_buttons" id="html">html</button></li>
+<li><button class="menu_buttons" id="css">css</button></li>
+<li><button  class="menu_buttons" id="jquery">jquery</button></li>
+</ul>
+</div>
+</section>
+<div class="content">
+	<div id="inner" hidden>
+		<table id="tone" >
+			<thead>
+				<tr>
+					<th class="uid">uid</th>
+					<th class="fn">fn</th>	
+					<th class="ln">ln</th>
+					<th class="addr">addr</th>
+					<th class="email">email</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr>				
+					<td class="uid">abc1</td>
+					<td class="fn">xyz1</td>
+					<td class="ln">a1</td>
+					<td class="addr">pqr1</td>
+					<td class="email">van@gmail.com</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc2</td>
+					<td class="fn">xyz2</td>
+					<td class="ln">a2</td>
+					<td class="addr">pqr2</td>
+					<td class="email">san@gmail.com</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc3</td>
+					<td class="fn">xyz3</td>
+					<td class="ln">a3</td>
+					<td class="addr">pqr3</td>
+					<td class="email">ran@gmail.com</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc4</td>
+					<td class="fn">xyz4</td>
+					<td class="ln">a4</td>
+					<td class="addr">pqr4</td>
+					<td class="email">can@gmail.com</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc5</td>
+					<td class="fn">xyz5</td>
+					<td class="ln">a5</td>
+					<td class="addr">pqr5</td>
+					<td class="email">jan@gmail.com</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<div class="actions">
+			<button id="btn1">make col 2&3 red </button>
+			<button id="btn2">get 1 2 &5 record</button>
+		
+			
+			
+		</div>
+			<div class="setwidth">
+			<label>column</label>
+			<input type="text" id="col_text">
+			<label>width</label>
+			<input type="text" id="width_text">
+		
+			
+			<button id="btn_width">set width</button>
+		</div>
+		<p id="jsonArray"></p>
+		
+	</div>
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>		
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script>
+		
+		$(document).ready(function(){
+			
+			$("#jquery").click(function(){
+				$("#inner").show();
+			});
+			
+			rows=[1,2,5];
+			jsArray=[];
+		   $("#btn1").click(function(){
+				//$(".fn,.ln").css("background-color","red");
+				colNumber=[2,3];
+				
+					//$("table tr").each(function(){
+						$.each(colNumber,function(index){
+						$("tr td:nth-child("+colNumber[index]+")").css("background-color","red");
+						
+					});
+				//});
+			});
+
+			 $("#btn2").click(function(){
+				jsArray=[];
+				
+				$.each(rows,function(index){
+					
+					var uid=$("tbody tr:nth-child("+rows[index]+")").find(".uid").text();
+					var fn=$("tbody tr:nth-child("+rows[index]+")").find(".fn").text();
+					var ln=$("tbody tr:nth-child("+rows[index]+")").find(".ln").text();
+					var email=$("tbody tr:nth-child("+rows[index]+")").find(".email").text();
+					var addr=$("tbody tr:nth-child("+rows[index]+")").find(".addr").text();
+					json={"uid":uid,"fn":fn,"ln":ln,"email":email,"addr":addr};
+					jsArray.push(JSON.stringify(json));
+					
+
+				});
+				
+				$("#jsonArray").text(jsArray);
+			});
+		
+
+			$("#btn_width").click(function(){
+				var colNo=$("#col_text").val();
+				var widthText=$("#width_text").val();
+				//$("."+colNo).css("width",widthText);
+				$("table tr").each(function(){
+					$("tr td:nth-child("+colNo+")").css("width",widthText);
+				});
+				
+			});
+			
+			$('td').click(function(){
+				var column = $(this).parent().children().index($(this))+1;
+				var row = $(this).parent().parent().children().index($(this).parent())+1;
+				alert(row+','+column);
+			});
+			
+		});
+	</script>
+</html>

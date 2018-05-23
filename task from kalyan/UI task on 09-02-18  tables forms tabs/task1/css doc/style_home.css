@@ -1,0 +1,37 @@
+
+input {	
+}
+#div_class {
+	clear: left;
+	margin-left:50px;
+}
+#div_css {
+	clear: left;
+	margin-left:50px;
+}
+input{
+	margin-left: 70px;
+	margin-top: 30px;
+
+}
+.even{
+	color:#ffffff;
+	background-color:#000000;
+	
+}
+.odd{
+	
+	background-color:#fcfcfc;
+}
+#evencssrow{
+	margin-left: 80px;
+}
+table, td, th {
+	padding: 5px;
+	clear: left;
+	border: 2px solid black;
+	border-collapse: collapse;
+	font-size:30px;
+	text-align:center;
+}
+

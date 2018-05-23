@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>home page</title>
+<script>
+</script>
+<link rel="stylesheet" href="../css doc/style_home.css">
+</head>
+<body>
+<header>
+<h1> examples</h1>
+</header>
+<section id="menu_section">
+<div id="link_div">
+<ul>
+<li><button  class="menu_buttons" id="html">html</button></li>
+<li><button class="menu_buttons" id="css">css</button></li>
+<li><button  class="menu_buttons" id="jquery">jquery</button></li>
+</ul>
+</div>
+</section>
+<div class="content">
+	<div id="inner">
+		<table id="tone" >
+			<thead>
+				<tr>
+					<th class="uid 1">uid</th>
+					<th class="fn 2">fn</th>
+					<th class="ln 3">ln</th>
+					<th class="addr 4">addr</th>
+					<th class="email 5">email</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+
+				
+				
+			</tbody>
+		</table>
+		<div class="actions">
+			<button id="btn1">display table</button>
+			<button id="btn2">make 1 2 4 rows bold</button>
+		
+	</div>
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>		
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script>
+		
+		$(document).ready(function(){
+			
+			
+		   $("#btn1").click(function(){
+				$("table tbody").empty();
+				row1='<tr class="red"><td class="uid 1">abc1</td><td class="fn 2">xyz1</td><td class="ln 3">a1</td>'+
+					'<td class="addr 4">pqr1</td><td class="email 5">van@gmail.com</td></tr>';
+				row2='<tr class="red"><td class="uid 1">abc2</td><td class="fn 2">xyz2</td><td class="ln 3">a2</td>'+
+					'<td class="addr 4">pqr2</td><td class="email 5">san@gmail.com</td></tr>';
+				row3='<tr><td class="uid 1">abc3</td><td class="fn 2">xyz3</td><td class="ln 3">a3</td>'+
+					'<td class="addr 4">pqr3</td><td class="email 5">lan@gmail.com</td></tr>';
+				row4='<tr class="red"><td class="uid 1">abc4</td><td class="fn 2">xyz4</td><td class="ln 3">a4</td>'+
+					'<td class="addr 4">pqr4</td><td class="email 5">cam@gmail.com</td></tr>';
+				row5='<tr><td class="uid 1">abc5</td><td class="fn 2">xyz5</td><td class="ln 3">a5</td>'+
+					'<td class="addr 4">pqr5</td><td class="email 5">ssjdbdjbjn@gmail.com</td></tr>';
+				$("table tbody").append(row1);
+				$("table tbody").append(row2);
+				$("table tbody").append(row3);
+				$("table tbody").append(row4);
+				$("table tbody").append(row5);
+				
+			});
+
+			$("#btn2").on('click',function(){
+				
+					$(".red").children().css("font-weight","bold");
+				
+			});
+
+			
+		});
+	</script>
+</html>

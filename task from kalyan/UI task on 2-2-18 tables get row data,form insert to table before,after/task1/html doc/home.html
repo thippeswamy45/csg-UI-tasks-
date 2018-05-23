@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+	
+	
+	function makeJson()
+	{
+	var i=1;
+	$("input:checkbox").each(function()
+	{
+	if($(this).is(":checked"))
+	{
+	displayJson(this,"data"+i)
+	i+=1;
+	}			
+	});
+    }
+
+	
+	function displayJson(elementRef,pid)
+	{
+	var uid=$(elementRef).parent().parent().find(".uid").text();
+	var fn=$(elementRef).parent().parent().find(".fn").text();
+	var ln=$(elementRef).parent().parent().find(".ln").text();
+	var addr=$(elementRef).parent().parent().find(".addr").text();	
+	var city=$(elementRef).parent().parent().find(".city").text();
+	var myObject={uid:uid,firstname:fn,lastname:ln,address:addr,City:city};
+	var myJson=JSON.stringify(myObject);
+	document.getElementById(pid).innerHTML=myJson;
+	}
+	
+	
+	
+	</script>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+</head>
+<body>
+	<form action="">
+		<table>
+			<tr>
+				<th>actions</th>
+				<th>U id</th>
+				<th>firstname</th>
+				<th>lastname</th>
+				<th>address</th>			
+				<th>city</th>			
+			</tr>
+			<tr>
+				<td><input id="checkbox1"  type="checkbox"</td>
+				<td class="uid">abc1</td>
+				<td class="fn">xyz1</td>
+				<td class="ln">a1</td>
+				<td class="addr">pqr1</td>
+				<td class="city">bangalore</td>
+			</tr>
+			<tr>
+				<td><input id="checkbox2" type="checkbox"</td>
+				<td class="uid">abc2</td>
+				<td class="fn">xyz2</td>
+				<td class="ln">a2</td>
+				<td class="addr">pqr2</td>
+				<td class="city">tumkur</td>
+			</tr>
+			<tr>
+				<td><input id="checkbox3" type="checkbox"</td>
+				<td class="uid">abc3</td>
+				<td class="fn">xyz3</td>
+				<td class="ln">a3</td>
+				<td class="addr">pqr3</td>
+				<td class="city">mysore</td>
+			</tr>
+		</table>
+		<div>
+			<input id="getrowdata"type="button" value="get row data" onclick='makeJson();'>
+		</div>
+	</form>
+	<p id="data1"></p>
+	<p id="data2"></p>
+	<p id="data3"></p>
+</body>
+</html>

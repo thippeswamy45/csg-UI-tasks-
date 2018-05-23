@@ -1,0 +1,108 @@
+* {
+    box-sizing:border-box;
+	padding:0px;
+	margin:0px;
+}
+body{
+
+}
+h1{
+font-size:50px;
+color:green;
+text-align:center;
+}
+
+#link_div a:visited,#link_div a:link{
+//border-radius: 10px;
+border: 2px solid purple;
+//margin-right:1px;
+padding:2px;
+background-color:#00ffff;
+text-decoration:none;
+//width:20%;
+text-align:center;
+color:black;
+//float: left;
+display:block;
+}
+#link_div{
+
+width:20%;
+height:1132px;
+background-color:grey;
+float:left;
+}
+#link_div a:active,#link_div a:hover{
+background-color:red;
+}
+#image_div{
+	margin-bottom:20px;
+	width:80%;
+	height:500px;
+	background:url('../images doc/company_image.jpg') no-repeat;
+	float:left;
+}
+#menu_section{	
+	margin-top:30px;	
+}
+section{
+	font-size:30px;
+	text-align:left;
+}
+section p{
+	
+	color:red;
+}
+.column{
+	padding-top:10px;
+	width:44%;	
+	height:300px;
+	border:2px solid purple;
+	float:left;
+	margin-left:30px;	
+	color:black;
+	font-size:20px;
+}
+.column3{
+    height:600px;
+    padding-top:10px;
+	width:30%;	
+	border:2px solid purple;	
+	float:right;	
+	margin-right:25px;
+	color:black;
+	font-size:20px;
+	 
+}
+.read_more{
+	color:red;
+	text-decoration:none;
+}
+#col1_img{
+	width:80%;
+	height:130px;
+	background:url('../images doc/about_image.jfif') no-repeat;
+	margin-left:50px;
+}
+#col2_img{
+	width:80%;
+	height:130px;
+	background:url('../images doc/career_image_small.jfif') no-repeat;
+	margin-left:50px;
+}
+#col3_img{
+	width:80%;
+	height:200px;
+	background:url('../images doc/achieve_image_small.jfif') no-repeat;
+	margin-left:30px;
+}
+footer
+{
+	margin-top:50px;
+	padding:20px 100px;
+	background-color:blue;
+	height:100px;
+	clear:left;
+	color:white;
+	
+}

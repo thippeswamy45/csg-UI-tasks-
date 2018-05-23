@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>	
+	function removeRow()
+	{
+	
+	$("input:checkbox").each(function()
+	{
+	if($(this).is(":checked"))
+	{
+	$(this).parent().parent().remove();		
+	}			
+	});
+    }
+   function addBefore()
+   {
+   var uid=$("#text_uid").val();
+   var fn=$("#text_fn").val();
+   var ln=$("#text_ln").val();
+   var addr=$("#text_address").val();
+   var city=$("#text_city").val();
+   var string_table_row="<tr><td><input id='checkbox' type='checkbox'</td><td class='uid'>"+
+   uid+"</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+"</td><td class='addr'>"+
+   addr+"</td><td class='city'>"+city+"</td></tr>";
+   $("tbody tr:nth-child(1)").before(string_table_row);
+   }
+   function addAfter()
+   {
+   var uid=$("#text_uid").val();
+   var fn=$("#text_fn").val();
+   var ln=$("#text_ln").val();
+   var addr=$("#text_address").val();
+   var city=$("#text_city").val();
+   var string_table_row="<tr><td><input id='checkbox' type='checkbox'</td><td class='uid'>"+
+   uid+"</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+"</td><td class='addr'>"+
+   addr+"</td><td class='city'>"+city+"</td></tr>";
+   $("tbody tr:nth-child(2)").after(string_table_row);
+   }	
+	</script>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+</head>
+<body>
+	<form action="">
+		<table id="tone">
+		<thead>
+			<tr id="tr1">
+			<th>actions</th>
+			<th>U id</th>
+			<th>firstname</th>
+				<th>lastname</th>
+			<th>address</th>			
+			<th>city</th>			
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><input id="checkbox1" class="checkbox" type="checkbox"</td>
+				<td class="uid">abc1</td>
+				<td class="fn">xyz1</td>
+				<td class="ln">a1</td>
+				<td class="addr">pqr1</td>
+				<td class="city">bangalore</td>
+			</tr>
+			<tr>
+				<td><input id="checkbox2" class="checkbox" type="checkbox"</td>
+				<td class="uid">abc2</td>
+				<td class="fn">xyz2</td>
+				<td class="ln">a2</td>
+				<td class="addr">pqr2</td>
+				<td class="city">tumkur</td>
+			</tr>
+			<tr>
+				<td><input id="checkbox3" class="checkbox" type="checkbox"</td>
+				<td class="uid">abc3</td>
+				<td class="fn">xyz3</td>
+				<td class="ln">a3</td>
+				<td class="addr">pqr3</td>
+				<td class="city">mysore</td>
+			</tr>
+			</tbody>
+		</table>
+		<div>
+			<input id="delete"type="button" value="delete row" onclick='removeRow();'>
+		</div>
+		<label class="labels" >U id<span >:</span></label>
+		<input type="text" class="textbox"  id="text_uid" value="">
+  
+		<label class="labels" >Firstname<span>:</span></label>
+		<input type="text" class="textbox" id="text_fn" value="">
+  
+		<label class="labels" >Lastname<span>:</span></label>
+		<input type="text" class="textbox" id="text_ln"  value="">
+  
+		<label class="labels" >Address<span >:</span></label>
+		<input type="text" class="textbox" id="text_address"  value="">
+  
+		<label class="labels" >city<span>:</span></label>
+		<input type="text"  class="textbox" id="text_city" >
+		<div>
+			<input id="insert1" type="button"  value="Isert before 1st row" onclick="addBefore();">
+			<input id="insert2" type="button"  value="Isert after 2nd row" onclick="addAfter();">
+		</div>
+	</form> 
+</body>
+</html>

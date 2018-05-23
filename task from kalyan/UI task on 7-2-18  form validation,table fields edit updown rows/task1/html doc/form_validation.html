@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../css doc/style_form_validation.css">
+<title>home page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	var alert_string="! this field is required";
+	function submitForm(fn,ln,addr,pn,email)
+	{
+		$(".alert_text,#data").text("");
+		var flag_required=true;
+		if(fn=="")
+		{
+			$("#alert_fn").text(alert_string);
+			flag_required=false;
+		}
+		if(ln=="")
+		{
+			$("#alert_ln").text(alert_string);
+			flag_required=false;
+		}
+		if(addr=="")
+		{
+			$("#alert_addr").text(alert_string);
+			flag_required=false;
+		}
+		if(pn=="")
+		{
+			$("#alert_pn").text(alert_string);
+			flag_required=false;
+		}
+		if(email=="")
+		{
+			$("#alert_email").text(alert_string);
+			flag_required=false;
+		}
+		else
+		{
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if (!filter.test(email))
+			{
+				$("#alert_email").text(alert_string);
+				flag_required=false;
+			}
+		}
+		if(flag_required==true)
+		{
+			var myObject={
+			"Firstname":fn,"Last name":ln,"Address":addr,"Phone no":pn,"Email":email
+			};
+			var myJSON=JSON.stringify(myObject);
+			document.getElementById("data").innerHTML =myJSON;
+		}
+	}
+
+
+</script>
+
+</head>
+<body>
+<form action="">
+  <label for="fn">Firstname<span class="colon">:</span></label>
+  <input type="text" id="text_fn" name="firstname"   value="">
+  <p id="alert_fn" class="alert_text"> </p>
+ <label for="ln">Lastname<span class="colon">:</span></label>
+  <input type="text" id="text_ln"  value="">
+ <p id="alert_ln" class="alert_text"> </p>
+ <label for="address">Address<span class="colon" >:</span></label>
+  <input type="text" id="text_address"  value="">
+ <p id="alert_addr" class="alert_text"> </p>
+ <label for="phone no">Phone no<span class="colon" >:</span></label>
+  <input type="text"  id="text_pn" value="">
+  <p id="alert_pn" class="alert_text"> </p>
+ <label for="email">Email<span class="colon">:</span></label>
+  <input type="email"  id="text_email" >
+ <p id="alert_email" class="alert_text"> </p>
+  <div>
+  <input id="submit" type="button" onclick='submitForm($("#text_fn").val(),$("#text_ln").val(),$("#text_address").val(),$("#text_pn").val(),$("#text_email").val());' value="Submit">
+  <input id="reset" type="reset"  value="Reset">
+  
+	</div>
+  </form> 
+<p id="data"></p>
+</body>
+</html>

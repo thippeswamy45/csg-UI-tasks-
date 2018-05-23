@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+	
+		$(document).ready(function(){
+		
+			$("#oddclassrow").click(function(){
+				$("tbody>tr:even").addClass("odd");
+				$("tbody>tr:even").css({"color":"","background-color":""});
+				$("tbody>tr:odd").css({"color":"","background-color":""});
+				$("tbody>tr:odd").removeClass("even");
+			});
+		
+			$("#oddcssrow").click(function(){
+				$("tbody>tr:even").removeClass("odd");
+				$("tbody>tr:odd").removeClass("even");
+				$("tbody>tr:even").css("background-color","#fcfcfc");
+				$("tbody>tr:odd").css({"color":"","background-color":""});
+				
+			});
+			
+			$("#evenclassrow").click(function(){
+				$("tbody>tr:odd").addClass("even");
+				$("tbody>tr:even").removeClass("odd");
+				$("tbody>tr:even").css({"background-color":""});
+				$("tbody>tr:odd").css({"color":"","background-color":""});
+			});
+		
+			$("#evencssrow").click(function(){			
+				$("tbody>tr:odd").css({"background-color":"#000000","color":"#ffffff"});
+				$("tbody>tr:even").css({"background-color":""});
+				$("tbody>tr:odd").removeClass("even");
+				$("tbody>tr:even").removeClass("odd");
+			});
+		});	
+	
+	</script>
+	
+</head>
+<body>
+	<form action="">
+		<table>
+			<thead>
+				<tr>
+					<th>U id</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>address</th>			
+					<th>city</th>			
+				</tr>
+			</thead>
+			<tbody>
+				<tr>				
+					<td class="uid">abc1</td>
+					<td class="fn">xyz1</td>
+					<td class="ln">a1</td>
+					<td class="addr">pqr1</td>
+					<td class="city">bangalore</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc2</td>
+					<td class="fn">xyz2</td>
+					<td class="ln">a2</td>
+					<td class="addr">pqr2</td>
+					<td class="city">tumkur</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc3</td>
+					<td class="fn">xyz3</td>
+					<td class="ln">a3</td>
+					<td class="addr">pqr3</td>
+					<td class="city">mysore</td>
+				</tr>
+				<tr>				
+					<td class="uid">abc4</td>
+					<td class="fn">xyz4</td>
+					<td class="ln">a4</td>
+					<td class="addr">pqr4</td>
+					<td class="city">hubli</td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="div_class">
+			<input id="oddclassrow"   type="button" value="odd class row" >
+			<input id="evenclassrow"  type="button" value="even class row" >
+		</div>	
+		<div id="div_css">
+			<input id="oddcssrow"   type="button" value="odd css row" >
+			<input id="evencssrow"   type="button" value="even css row" >
+		</div>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>		
+	</script>
+	
+</head>
+<body>
+	<div class="tab">
+	  <button class="tablinks" onclick="openTab(event,'tab1')">tab1</button>
+	  <button class="tablinks" onclick="openTab(event,'tab2')">tab2</button>
+	  <button class="tablinks" onclick="openTab(event,'tab3')">tab3</button>
+	</div>
+
+	<div id="tab1" class="tabcontent">
+	  <h3>tab1</h3>
+	  <p>tab1 content here :</p>
+	</div>
+
+	<div id="tab2" class="tabcontent">
+	  <h3>tab2</h3>
+	  <p>tab2 content here :</p> 
+	</div>
+
+	<div id="tab3" class="tabcontent">
+	  <h3>tab3</h3>
+	  <p>tab3 content here</p>
+	</div>
+<script>
+function openTab(evt,tabName) {
+    var tabcount, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for(tabcount = 0; tabcount < tabcontent.length; tabcount++){
+        tabcontent[tabcount].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (tabcount = 0; tabcount < tablinks.length; tabcount++) {
+        tablinks[tabcount].className = tablinks[tabcount].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+	
+</body>
+</html>

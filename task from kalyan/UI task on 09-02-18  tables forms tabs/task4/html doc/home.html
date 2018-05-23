@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+		
+		var elementRef={};
+
+		$(document).ready(function(){
+			var json={"Result":{"UserDetails":[{"Id":"1","FName":"John","LastName":"Deo","Email":"john.deo@gmail.com","Address":"Address 123","City":"NewYork"},{"Id":"1","FName":"John","LastName":"Paul","Email":"john.paul@gmail.com","Address":"Address 1234","City":"NewJersey"},{"Id":"1","FName":"Steve","LastName":"Waugh","Email":"steve.waugh@gmail.com","Address":"Address 111","City":"Rockville"}]},"Code":200,"ErrorMessage":null}
+			var row_count=json.Result.UserDetails.length;
+			for(var i=0;i<row_count;i++)
+			{					
+				var id=json.Result.UserDetails[i].Id;
+				var fn=json.Result.UserDetails[i].FName;
+				var ln=json.Result.UserDetails[i].LastName;
+				var email=json.Result.UserDetails[i].Email;
+				var addr=json.Result.UserDetails[i].Address;
+				var city=json.Result.UserDetails[i].City;
+				var string_html="<tr><td class='uid'>"+id+
+						   "</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+
+						   "</td><td class='email'>"+email+"</td><td class='addr'>"+addr+
+						   "</td><td class='city'>"+city+"</td><td><input class='edit' type='button' value='Edit'></td></tr>";
+				$("#tone tbody").append(string_html);
+			}
+			$("form").hide();
+
+			$("#display").click(function(){
+				document.getElementById("data").innerHTML=JSON.stringify(json);
+				$("p").show();
+				$("form").hide();
+			});
+			
+			
+			$("#new").click(function(){
+				$("form").show();
+				$("#update").hide();
+				$("p").hide();
+				$("table").hide();
+				$(this).hide();
+				$("#display").hide();
+				$("#addRow").show();
+				$("#cancel").show();	
+				$("form").trigger("reset");				
+			});
+			 
+			$("#addRow").click(function(){ 		   		  				   			   
+				var uid=$("#text_uid").val();
+				var fn=$("#text_fn").val();
+				var ln=$("#text_ln").val();
+				var email=$("#text_email").val();
+				var addr=$("#text_address").val();
+				var city=$("#text_city").val();
+				var string_html="<tr><td class='uid'>"+uid+
+				"</td><td class='fn'>"+fn+"</td><td class='ln'>"+ln+
+				"<td class='email'>"+email+"</td></td><td class='addr'>"+addr+
+				"</td><td class='city'>"+city+
+				"</td><td><input class='edit' type='button' value='Edit'></td></tr>";				   
+				$("#tone tbody").append(string_html);
+				$("table").show();
+				row_count++;		
+				$("#cancel").trigger("click");
+			});
+			   
+			$("#cancel").click(function(){
+				$("form").trigger("reset");
+				$("form").hide();
+				$("table").show();
+				$("#display").show();
+				$("#new").show();
+			});
+			
+			$("tbody").on('click',".edit", function () {
+			
+				elementRef= this;
+				var id=$(elementRef).parent().parent().find(".uid").text();
+				var fn=$(elementRef).parent().parent().find(".fn").text();
+				var ln=$(elementRef).parent().parent().find(".ln").text();
+				var email=$(elementRef).parent().parent().find(".email").text();
+				var address=$(elementRef).parent().parent().find(".addr").text();
+				var city=$(elementRef).parent().parent().find(".city").text();
+				
+				$("#text_uid").val(id),$("#text_fn").val(fn),$("#text_ln").val(ln),$("#text_address").val(address),$("#text_city").val(city),$("#text_email").val(email);
+				$("form").show();
+				$("#update").show();
+				$("#display").hide();
+				$("#new").hide();
+				$('#addRow').hide();
+				$('#cancel').hide();
+			    $("#data").hide();
+				
+			});
+			
+			$("#update").click( function () {
+				$(elementRef).parent().parent().find(".uid").text($("#text_uid").val());
+				$(elementRef).parent().parent().find(".fn").text($("#text_fn").val());
+				$(elementRef).parent().parent().find(".ln").text($("#text_ln").val());
+				$(elementRef).parent().parent().find(".addr").text($("#text_address").val());
+				$(elementRef).parent().parent().find(".city").text($("#text_city").val());
+				$(elementRef).parent().parent().find(".email").text($("#text_email").val());	           
+				$("#cancel").trigger("click");
+			});		
+		});
+	</script>
+	
+</head>
+<body>
+	
+		<table id="tone">
+			<thead>
+				<tr id="tr1">			
+					<th>Id</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>Email</th>
+					<th>address</th>			
+					<th>city</th>
+					<th>Actions</th>					
+				</tr>
+			</thead>
+			<tbody>				
+			</tbody>
+		</table>
+		<div>
+		<input id="display" type="button"  value="display object" >
+		<input id="new" type="button"  value="new" >
+		</div>
+	<form action="">	
+		<label class="labels" >Id<span >:</span></label>
+		<input type="text" class="textbox"  id="text_uid" value="">
+  
+		<label class="labels" >Firstname<span>:</span></label>
+		<input type="text" class="textbox" id="text_fn" value="">
+  
+		<label class="labels" >Lastname<span>:</span></label>
+		<input type="text" class="textbox" id="text_ln"  value="">
+
+		<label class="labels" >Email<span>:</span></label>
+		<input type="text"  class="textbox" id="text_email" >		
+
+		<label class="labels" >Address<span >:</span></label>
+		<textarea  rows="3" cols="22" class="textbox" id="text_address"></textarea>
+  
+		<label class="labels" >City<span>:</span></label>
+		<input type="text"  class="textbox" id="text_city" >
+		
+		
+		<div>
+			<input id="update" type="button"  value="Update" >
+			<input id="addRow" type="button"  value="Add row" >
+			<input id="cancel" type="button"  value="Cancel" >
+		</div>
+		
+	</form> 
+	<p id="data"></p>
+</body>
+</html>

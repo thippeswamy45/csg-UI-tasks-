@@ -1,0 +1,11 @@
+
+#accordion{
+	width:500px;
+	margin-right:0px;
+}
+
+.modal-content {
+  height:500px;
+  overflow:auto;
+}
+

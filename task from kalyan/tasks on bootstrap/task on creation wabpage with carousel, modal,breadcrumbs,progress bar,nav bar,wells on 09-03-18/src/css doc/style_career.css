@@ -1,0 +1,68 @@
+* {
+    box-sizing:border-box;
+	padding:0px;
+	margin:0px;
+}
+
+h1{
+font-size:50px;
+color:green;
+text-align:center;
+}
+
+a:link, a:visited{
+//display:block;
+border-radius: 10px;
+border: 2px solid purple;
+margin-right:1px;
+padding:2px;
+background-color:grey;
+text-decoration:none;
+//width:20%;
+text-align:center;
+color:black;
+font-size:100%;
+float: left;
+}
+
+#link_div{
+font-size:30px;
+margin-left:20%;
+}
+a:active, a:hover{
+background-color:red;
+}
+#image_div{
+	margin-top:50px;
+	//margin-left:150px;
+	width:1330px;
+	height:466px;
+	background:url('../images doc/career_image.jfif') no-repeat;
+	clear:left;
+}
+#text_div{
+color:green;
+font-size:30px;
+clear:left;
+font-style:italic;
+}
+#career{
+padding-left:50px;
+color:blue;
+font-size:20px;
+//width:800px;
+font-family:arial;
+}
+span{
+color:green;
+font-size:30px;
+}
+footer
+{
+	padding:20px 100px;
+	font-size:15px;
+	background-color:blue;
+	height:100px;
+	clear:left;
+	color:white;
+}

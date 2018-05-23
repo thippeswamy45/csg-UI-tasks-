@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+		<title>home page</title>
+	<script>
+	
+	
+	
+	
+	$(document).ready(function(){
+						
+		$("tbody").on('click',".up", function () {	
+       var elementRef={};		
+			elementRef= this;
+			
+			var email_up=$(elementRef).parent().parent().prev().find(".email").html();
+			
+			if(email_up)
+			{
+			var child1=$(elementRef).parent().parent().html();		
+				
+			$(elementRef).parent().parent().prev().before("<tr>" + child1 + "</tr>");
+			$(elementRef).parent().parent().remove();
+			}
+			
+		});
+
+		$("tbody").on('click',".down", function () {		
+			var elementRef= this;
+			
+			var email_down=$(elementRef).parent().parent().next().find(".email").html();
+			
+			if(email_down)
+			{
+			var child1=$(elementRef).parent().parent().html();						
+			$(elementRef).parent().parent().next().after("<tr>" + child1 + "</tr>");
+			$(elementRef).parent().parent().remove();
+			}
+		});
+		
+	});
+	
+	
+	
+	</script>
+	
+</head>
+<body>
+	
+	<table id="tone" >
+	<thead>
+		<tr id="tr0">
+			<th>firstname</th>
+			<th>lastname</th>
+			<th>address</th>
+			<th>phone no</th>
+			<th>email</th>
+			<th>actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class='fn'>fn1</td>
+			<td class='ln'>ln1</td>
+			<td class='addr'>addr1</td>
+			<td class='pn'>pn1</td>
+			<td class='email'>email1</td>
+			<td id='actions'><input type='button' class='up' value='Move up' >
+			<input type='button' class='down' value='Move down'>	
+			</td>			
+		</tr>
+		<tr>
+			<td class='fn'>fn2</td>
+			<td class='ln'>ln2</td>
+			<td class='addr'>addr2</td>
+			<td class='pn'>pn2</td>
+			<td class='email'>email2</td>
+			<td id='actions'><input type='button' class='up' value='Move up' >
+			<input type='button' class='down' value='Move down'>
+			
+			</td>			
+		</tr>
+		<tr>
+			<td class='fn'>fn3</td>
+			<td class='ln'>ln3</td>
+			<td class='addr'>addr3</td>
+			<td class='pn'>pn3</td>
+			<td class='email'>email3</td>
+			<td id='actions'><input type='button' class='up' value='Move up' >
+			<input type='button' class='down' value='Move down'>
+			
+			</td>			
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>

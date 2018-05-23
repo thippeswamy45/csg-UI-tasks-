@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+		<title>home page</title>
+	<script>
+	
+	
+	var elementRef={};
+	
+	$(document).ready(function(){
+		
+
+		$("tbody").on('click',".delete", function () {
+			$(this).parent().parent().remove();   
+		});		
+		
+		$("tbody").on('click',".edit", function () {		
+			elementRef= this;
+			var fn=$(elementRef).parent().parent().find(".fn").text();
+			var ln=$(elementRef).parent().parent().find(".ln").text();
+			var addr=$(elementRef).parent().parent().find(".addr").text();
+			var pn=$(elementRef).parent().parent().find(".pn").text();
+			var email=$(elementRef).parent().parent().find(".email").text();			
+			$(elementRef).parent().parent().find(".save").show();
+			$(elementRef).parent().parent().find(".cancel").show();
+			$(elementRef).parent().parent().find(".fn").css("font-size","0px");
+			$(elementRef).parent().parent().find(".ln").css("font-size","0px");
+			$(elementRef).parent().parent().find(".addr").css("font-size","0px");
+			$(elementRef).parent().parent().find(".pn").css("font-size","0px");
+			$(elementRef).parent().parent().find(".email").css("font-size","0px");
+			$(elementRef).parent().parent().find(".i_fn").show().val(fn);
+			$(elementRef).parent().parent().find(".i_ln").show().val(ln);
+			$(elementRef).parent().parent().find(".i_addr").show().val(addr);
+			$(elementRef).parent().parent().find(".i_pn").show().val(pn);
+			$(elementRef).parent().parent().find(".i_email").show().val(email);
+		    $(elementRef).parent().parent().find(".edit").hide();
+		});
+
+		$("tbody").on('click',".save", function () {		
+			elementRef= this;
+			var fn=$(elementRef).parent().parent().find(".i_fn").hide().val();
+			var ln=$(elementRef).parent().parent().find(".i_ln").hide().val();
+			var addr=$(elementRef).parent().parent().find(".i_addr").hide().val();
+			var pn=$(elementRef).parent().parent().find(".i_pn").hide().val();
+			var email=$(elementRef).parent().parent().find(".i_email").hide().val();
+			
+			var children1=$(elementRef).parent().parent().find(".fn").children();
+			var children2=$(elementRef).parent().parent().find(".ln").children();
+			var children3=$(elementRef).parent().parent().find(".addr").children();
+			var children4=$(elementRef).parent().parent().find(".pn").children();
+			var children5=$(elementRef).parent().parent().find(".email").children();	
+			
+			$(elementRef).parent().parent().find(".fn").text(fn).append(children1).css("font-size","15px");
+			$(elementRef).parent().parent().find(".ln").text(ln).append(children2).css("font-size","15px");
+			$(elementRef).parent().parent().find(".addr").text(addr).append(children3).css("font-size","15px");
+			$(elementRef).parent().parent().find(".pn").text(pn).append(children4).css("font-size","15px");
+			$(elementRef).parent().parent().find(".email").text(email).append(children5).css("font-size","15px");			
+			$(elementRef).parent().parent().find(".save").hide();
+			$(elementRef).parent().parent().find(".cancel").hide();
+			$(elementRef).parent().parent().find(".edit").show();							
+		});
+		
+		$("tbody").on('click',".cancel", function () {
+		
+			elementRef= this;
+			$(elementRef).parent().parent().find(".i_fn").hide();
+			$(elementRef).parent().parent().find(".i_ln").hide();
+			$(elementRef).parent().parent().find(".i_addr").hide();
+			$(elementRef).parent().parent().find(".i_pn").hide();
+			$(elementRef).parent().parent().find(".i_email").hide();
+										
+			$(elementRef).parent().parent().find(".fn").css("font-size","15px");
+			$(elementRef).parent().parent().find(".ln").css("font-size","15px");
+			$(elementRef).parent().parent().find(".addr").css("font-size","15px");
+			$(elementRef).parent().parent().find(".pn").css("font-size","15px");
+			$(elementRef).parent().parent().find(".email").css("font-size","15px");			
+			$(elementRef).parent().parent().find(".save").hide();
+			$(elementRef).parent().parent().find(".cancel").hide();
+			$(elementRef).parent().parent().find(".edit").show();						
+		});		
+	});
+	
+	
+	
+	</script>
+	
+</head>
+<body>
+	
+	<table id="tone" >
+	<thead>
+		<tr id="tr1">
+			<th>firstname</th>
+			<th>lastname</th>
+			<th>address</th>
+			<th>phone no</th>
+			<th>email</th>
+			<th>actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td class='fn'>fn1<input class='i_fn' type="text" hidden></td>
+		<td class='ln'>ln1<input class='i_ln' type="text" hidden></td>
+		<td class='addr'>addr1<input class='i_addr' type="text" hidden></td>
+		<td class='pn'>pn1<input class='i_pn' type="text" hidden></td>
+		<td class='email'>email1<input class='i_email' type="text" hidden></td>
+		<td id='actions'><input type='button' class='delete' value='Delete' >
+		<input type='button' class='edit' value='Edit'>
+		<input type='button' class='save' hidden value='Save'>
+		<input type='button' class='cancel' hidden value='Cancel'>
+		</td>			
+		</tr>
+		<tr>
+		<td class='fn'>fn2<input class='i_fn' type="text" hidden></td>
+		<td class='ln'>ln2<input class='i_ln' type="text" hidden></td>
+		<td class='addr'>addr2<input class='i_addr' type="text" hidden></td>
+		<td class='pn'>pn2<input class='i_pn' type="text" hidden></td>
+		<td class='email'>email2<input class='i_email' type="text" hidden></td>
+		<td id='actions'><input type='button' class='delete' value='Delete' >
+		<input type='button' class='edit' value='Edit'>
+		<input type='button' class='save' hidden value='Save'>
+		<input type='button' class='cancel' hidden value='Cancel'>
+		</td>			
+		</tr>
+		<tr>
+		<td class='fn'>fn3<input class='i_fn' type="text" hidden></td>
+		<td class='ln'>ln3<input class='i_ln' type="text" hidden></td>
+		<td class='addr'>addr3<input class='i_addr' type="text" hidden></td>
+		<td class='pn'>pn3<input class='i_pn' type="text" hidden></td>
+		<td class='email'>email3<input class='i_email' type="text" hidden></td>
+		<td id='actions'><input type='button' class='delete' value='Delete' >
+		<input type='button' class='edit' value='Edit'>
+		<input type='button' class='save' hidden value='Save'>
+		<input type='button' class='cancel' hidden value='Cancel'>
+		</td>			
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>

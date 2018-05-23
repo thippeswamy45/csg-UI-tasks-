@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>home page</title>
+	<link rel="stylesheet" href="../../bootstrap-3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../bootstrap-3.3.7/css/bootstrap-theme.min.css">
+	
+	<link rel="stylesheet" href="../css doc/style_home.css" >
+	
+	
+
+
+</head>
+	<body>
+	
+	<nav id="nav_bar" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid container_fluid_user">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="brand_user" href="#"><img src='../images/brand-white.png'  alt='brand' id='brand_symbol'><span class=sr-only>brand symbol</span></a>      
+		</div>		
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="home.html">Home</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Career</a></li>
+				<li><a href="#">Talent </a></li>
+				<li><a href="#">News </a></li>
+				<li><a href="#">Achievement</a></li>
+				<li><a href="#">Contact Us </a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right navbar_right_user">
+				<li><input id='search_box'class='input form-control' href="" placeholder='search'></li>
+				<li><span id='bell' class='glyphicon glyphicon-bell'><span></li>				
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="carousel_div" class="carousel slide" data-ride='carousel'>
+			<ol class="carousel-indicators">
+				<li data-target='#carousel_div' data-slide-to="0" class="active"></li> 
+				<li data-target='#carousel_div' data-slide-to="1"></li> 
+				<li data-target='#carousel_div' data-slide-to="2"></li> 
+			</ol>	
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src='../images/company_image.jpg' alt='img1'>
+				</div>
+				<div class="item">
+					<img src='../images/career_image.jfif' alt='img2'>
+				</div>
+				<div class="item">
+					<img src='../images/news_image.jfif' alt='img3'>
+				</div>
+			</div>
+			
+			<a class="left carousel-control" href='#carousel_div' data-slide='prev'>
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href='#carousel_div' data-slide='next'>
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+		
+		
+		<div class="row row_user">
+		
+			<div class="col-sm-4">
+				<div class="thumbnail thumbnail_user">
+					<h3 class="col_heading">About Us</h3>
+					<img src='../images/about_image.jfif' class="col_image" alt='img1'>
+					<div class="caption">
+						<p>XYZ Software Solutions is a information technology,which give web applications software solutions....
+						</p>
+						<a class="read_more" href="#">read more...</a>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="thumbnail thumbnail_user">
+					<h3 class="col_heading">Career</h3>
+					<img src='../images/career_image.jfif' class="col_image" alt='img2'>
+					<div class="caption">
+						<p>XYZ fills highly specialized positions.We match candidates to positions that best fit the candidate’s...
+						</p>
+						<a class="read_more" href="#">read more...</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="thumbnail thumbnail_user">
+					<h3 class="col_heading">Achievement</h3>
+					<img src='../images/achieve_image.jfif' class="col_image" alt='img3'>
+					<div class="caption">
+						<p>Historical milestones and a variety of achievements characterize our company’s journey..						
+						</p>
+						<a class="read_more" href="#">read more...</a>
+					</div>
+				</div>	
+			</div>
+		</div>
+	
+	</div>
+	
+	<div class="modal fade" id="message_inner_modal" tabindex='-1' role="dialog" data-backdrop='static' data-keyboard='false' >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="message_inner_title"><strong id="message_heading"></strong>
+						<button type="button" class="close close_modal" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+					</h3>
+				</div>
+				<div class="modal-body">
+					<div class="well well-sm">
+						<p>currently page not available!!
+					</div>
+				</div>
+				<div class="modal-footer">
+				
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<footer class="footer_user">
+	<h3>contact</h3> 
+	<p>121/2, 2nd Main Rd, East of NGEF Layout,Bangalore Karnataka India-560043</p>
+	</footer>
+	</body>
+	<script src="../../jquery_library/jquery-3.3.1.js"></script>	
+	<script src="../../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="../js doc/home.js"></script>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>	
+	<title>home page</title>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">	
+</head>
+<body>
+	
+		
+	<form action="">	
+
+		<label class="labels" >Name<span>:</span></label>
+		<input type="text" class="textbox" id="text_name" value="">
+		<p id="alert_name" class="alert_text"> </p>
+		<label class="labels" >Email<span>:</span></label>
+		<input type="text"  class="textbox" id="text_email" >				
+		<p id="alert_email" class="alert_text"> </p>
+		<label class="labels" >D.O.B<span>:</span></label>
+		<input type="text" id="datepicker" class="textbox">		
+		<p id="alert_dob" class="alert_text"> </p>
+		<label class="labels" >Languages known<span>:</span></label>
+		<table id='table_fieldset'>
+		<fieldset class='fieldset'>    
+			<div class="controlgroup">
+				<select class='languages'>
+					<option>select one</option>
+					<option>HTML-5</option>
+					<option>angular js</option>
+					<option>css-3</option>
+					<option>javascript</option>       
+				</select>
+				<p id="alert_language" class="alert_text"></p>
+				<label class="labels" >Rating<span id='rating_text' class='rating_text'>0</span></label>
+				<p id='slider' class='slider'></p>	
+				
+			</div>
+			<input type="button" id="addrow" class="addrow" value='add row'>
+		</fieldset>
+		</table>
+		
+		<div id='div_buttons'>
+			<input id="submit"  type="button" value="submit" >
+			<input id="display"  type="button" value="display object" >
+		</div>	
+	
+	</form>
+	<table id='tone'>
+		<thead>
+			<tr>				
+				<th>Name</th>
+				<th>Email</th>
+				<th>D.O.B</th>			
+				<th>languages</th>
+				<th>ratings</th>				
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div id='data'></div>
+	<div id='dialog'>
+		<p>you want to display object</p>
+		<input type='button' id='yes' value='yes'>
+		<input type='button' id='no' value='no'>
+	</div>
+	<p id='alert' class='alert_text' style='margin:0px;font-size:20px'></p> 
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>	 	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		
+	<script>
+	  
+		$(document).ready(function(){
+			var alert_string="! this field is required"; 
+			var row_count=0;
+			var myObject=[];
+			var	display_flag=false;			
+			$("#tone").hide();
+			$( "#datepicker" ).datepicker({maxDate:0});
+			$("#slider").slider({
+				min:0,
+				max:5,
+				stop:function( event,user_input ){
+					var slidevalue=user_input.value;
+					$("#rating_text").text(slidevalue);
+				}
+			});
+			$( "#dialog" ).dialog({autoOpen: false});					
+			$("body").on('click',"#addrow", function () {								
+				var string_html="<fieldset class='fieldset'><input type='button' class='delete' value='delete'><div class='controlgroup'><select class='languages'>"+
+				"<option>select one</option><option>HTML-5</option><option>angular js</option>"+
+				"<option>css-3</option><option>javascript</option></select><p class='alert_text' style='margin:0px' ></p>"+			
+				"<label class='labels' >Rating<span class='rating_text'>0</span></label>"+
+				"<p class='slider'></p></div></fieldset>";
+				$("#table_fieldset").append(string_html);
+				$(".slider").slider({
+					min:0,
+					max:5,
+					stop: function( event,user_input ){
+						var slidevalue=user_input.value;
+						$(this).parent().find(".rating_text").text(slidevalue);
+					}
+				});
+			
+			});
+			
+			$("body").on('click',".delete", function () {
+				$(this).parent().remove();
+				
+			});
+			
+			$("#submit").click(function(){
+			    display_flag=true;
+				count=0;
+				var languages_check=[];
+				var ratings_check =[];
+				var languages="";
+				var ratings ="";
+				var name=$("#text_name").val();
+				var email=$("#text_email").val();
+				var dob=$("#datepicker").val();
+				$(".alert_text").text("");
+				var required_flag=true;
+				if(name==="")
+				{
+					$("#alert_name").text(alert_string);
+					required_flag=false;
+				}
+				if(dob==="")
+				{
+					$("#alert_dob").text(alert_string);
+					required_flag=false;
+				}
+				if(email==="")
+				{
+					$("#alert_email").text(alert_string);
+					required_flag=false;
+				}
+				else
+				{
+					var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+					if (!filter.test($("#text_email").val())) 
+					{
+						$("#alert_email").text(alert_string);
+						required_flag=false;
+					}
+				}
+				$(".languages").each(function(){
+				if($(this).val()==="select one")
+				{
+					$(this).parent().find(".alert_text").text("select language");				
+					required_flag=false;
+				}
+				});
+				if(required_flag===true)
+				{
+					
+					$("fieldset").each(function(){
+						languages_check [count]=$(this).find(".languages option:selected").text();
+						ratings_check[count]=$(this).find(".rating_text").text();	
+						languages+=$(this).find(".languages option:selected").text()+",";
+						ratings+=$(this).find(".rating_text").text()+",";
+						count++;
+					});
+					
+					var unique_languages=jQuery.unique(languages_check);
+					if(count===unique_languages.length)
+					{
+						
+						languages=languages.substring(0,languages.length-1);
+						ratings=ratings.substring(0,ratings.length-1);
+						
+						var string_row="<tr><td class='name'>"+name+"</td>"+
+							"<td class='email'>"+email+"</td></td><td class='dob'>"+dob+
+							"</td><td class='languages_data'>"+languages+"</td>"+
+							"<td class='rating_data'>"+ratings+"</td></tr>";							   
+						$("#tone tbody").append(string_row);
+						myObject[row_count]={"name":name,"Email":email,"DOB":dob,"languages":languages,"ratings":ratings};
+						row_count++;
+						$("#tone").show();
+						$("form").trigger("reset");
+						$(".slider").slider({"value":0});
+						$(".rating_text").text("0");
+					}
+					else
+					{
+						$("#alert").text("there are more than one same language !!")
+					}
+				}
+			});
+			
+			$( "#display" ).on( "click", function(){
+				if(display_flag)
+				{
+					$( "#dialog" ).dialog( "open" );
+				}	
+			});
+			
+			$( "#yes" ).on( "click", function(){			    
+				var myJSON=JSON.stringify(myObject);					
+				$('#data').html(myJSON);
+				$( "#dialog" ).dialog( "close" );
+			});
+			
+			$( "#no" ).on( "click", function() {				
+				$( "#dialog" ).dialog( "close" );
+			});
+			
+			
+				
+			
+		});	
+	</script>
+</html>

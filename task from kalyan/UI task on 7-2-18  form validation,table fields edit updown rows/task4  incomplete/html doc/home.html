@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+		$(document).ready(function(){
+			$("body").on('click',"#up", function ()
+			{
+		
+		
+				if($("input").eq(0).is(":checked"))
+					{			
+					}
+				else
+					{
+						$("input:checkbox").each(function(){
+							if($(this).is(":checked"))
+							{		
+							var	elementRef= this;													
+							var child1=$(elementRef).parent().parent().html();						
+							$(elementRef).parent().parent().prev().before("<tr>" + child1 + "</tr>");
+							$(elementRef).parent().parent().remove();
+							}									
+						});
+					}	
+				
+			});
+
+			$("body").on('click',"#down", function (){	
+				
+				var count= $("tbody tr").length;
+			
+				if($("input").eq(count-1).is(":checked"))
+				{  
+				}
+				else
+				{
+				    var checked_count=0;
+					var elementRef={};
+					var childs=[];
+					$("input:checkbox").each(function(){
+					
+						if($(this).is(":checked"))
+						{	
+						 elementRef= this;																					
+						 childs[checked_count]=$(elementRef).parent().parent().html();
+												
+						checked_count++;
+					//	alert(checked_count);
+						}
+			
+			
+					});
+					console.log(childs);
+					var rowcount = checked_count;
+						for(var i=0;i<checked_count;i++)
+						{
+							$('tbody tr:eq('+i+')').remove();
+							$('tbody tr:eq('+rowcount+')').next().after("<tr>" + childs[i] + "</tr>");
+						
+						}
+						
+				} 
+			
+			});
+			
+		});
+	
+	
+	
+	
+	
+	</script>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+</head>
+<body>
+	<form action="">
+		<table>
+		<thead>
+			<tr>
+				<th>actions</th>
+				<th>U id</th>
+				<th>firstname</th>
+				<th>lastname</th>
+				<th>address</th>			
+				<th>city</th>			
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input  type="checkbox"</td>
+					<td class="uid">abc1</td>
+					<td class="fn">xyz1</td>
+					<td class="ln">a1</td>
+					<td class="addr">pqr1</td>
+					<td class="city">bangalore</td>
+				</tr>
+				<tr>
+					<td><input  type="checkbox"</td>
+					<td class="uid">abc2</td>
+					<td class="fn">xyz2</td>
+					<td class="ln">a2</td>
+					<td class="addr">pqr2</td>
+					<td class="city">tumkur</td>
+				</tr>
+				<tr>
+					<td><input  type="checkbox"</td>
+					<td class="uid">abc3</td>
+					<td class="fn">xyz3</td>
+					<td class="ln">a3</td>
+					<td class="addr">pqr3</td>
+					<td class="city">mysore</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<input id="up" type="button" value="move up">
+			<input id="down" type="button" value="move down">
+		</div>
+	</form>
+	<p id="data1"></p>
+	<p id="data2"></p>
+	<p id="data3"></p>
+</body>
+</html>

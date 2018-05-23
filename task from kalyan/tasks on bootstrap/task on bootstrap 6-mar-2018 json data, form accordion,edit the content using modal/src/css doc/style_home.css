@@ -1,0 +1,77 @@
+
+#accordion{
+	width: 500px;
+	margin: auto;
+}
+
+.slider{
+	float: left;
+	clear: both;
+	width: 250px;
+	
+}
+.modal-body {
+  height: 400px;
+  overflow: auto;
+}
+
+.fieldset1{
+	width: 559px;
+	padding: 10px;
+	padding-right: 0px;
+	height: 100px;
+	border: solid lightgrey 1px;
+	margin-bottom: 5px;
+	border-radius:1px;
+}
+.addRow{
+	position: relative;
+    left: 231px;
+    bottom: 98px;
+	
+
+}
+.deleteRow{
+	position: relative;    
+   bottom: 100px;
+   right: 1px;
+}
+.textbox{
+	margin-bottom: 10px;
+}
+.alert_user{
+	text-align: center;
+	padding: 8px;
+	
+}
+.edit{
+	position: relative;
+    bottom: 13px;
+    left: 402px;
+}
+.alert_text{
+	clear: both;
+	margin-left: 200px;
+	padding: 0px;
+	margin-bottom: 0px;
+	color: red;
+}
+
+.label_user{
+	padding-right: 14px;
+}
+.languages{
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.rating_slider{
+	position: relative;
+    left: 214px;
+    bottom: 46px;
+	width: 100px;
+}
+.language_dropdown{
+	width: 200px;
+    position: relative;
+    left: 10px;
+}

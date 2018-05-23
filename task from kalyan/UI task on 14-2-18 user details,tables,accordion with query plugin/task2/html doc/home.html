@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css"> 
+	<title>home page</title>
+	
+	
+</head>
+<body>
+	<div id='accordion'>	
+	</div>
+	
+	<form action="">		  
+		<label class="labels" >Email<span>:</span></label>
+		<input type="text"  class="textbox" id="text_email" >				
+		<p id="alert_email" class="alert_text"> </p>
+		<label class="labels" >D.O.B<span>:</span></label>
+		<input type="text" id="datepicker" class="textbox">		
+		<p id="alert_dob" class="alert_text"></p>
+		<label class="labels" >Languages known<span>:</span></label>
+		
+		<table id='table_fieldset'>		
+		</table>
+		
+		<div id='div_buttons'>
+			<input id="submit"  type="button" value="submit" >			
+		</div>	
+	
+	</form>
+		
+	<p id='alert' class='alert_text' style='margin:0px;font-size:20px'></p> 
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>		
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script>
+		
+		$(document).ready(function(){
+		    var alert_string="! this field is required";
+			var elementRef={};
+			var extra_row=0;
+			var json={"Result":{"UserDetails":[{"name":"Robert","DOB":"02/05/2018","languages":["HTML-5","angular js","javascript"],"ratings":["3","4","2"],"Email":"robert@gmail.com"},{"name":"Komal","DOB":"02/11/2018","languages":["css-3","javascript"],"ratings":["5","1"],"Email":"komal@gmail.com"},{"name":"Ranjan","DOB":"01/08/2018","languages":["angular js","HTML-5"],"ratings":["1","2"],"Email":"ranjan@gmail.com"}]}};
+			var row_count=json.Result.UserDetails.length;
+			$("form").hide();
+			var i=0;
+			for(i;i<row_count;i++)
+			{								
+				var name=json.Result.UserDetails[i].name;
+				var dob=json.Result.UserDetails[i].DOB;
+				var email=json.Result.UserDetails[i].Email;
+				var ratings=json.Result.UserDetails[i].ratings;
+				var languages=json.Result.UserDetails[i].languages;
+				var string_accordion="<h1 class='name'>"+name+"</h1><div id='div_accordion"+i+"'><input type='button' class='edit' value='edit'>"+		
+				"<p>dob:<span class='dob'>"+dob+"</span></p><p>email:<span class='email'>"+email+"</span></p><p class='rating'>ratings:</p>"+
+				"<p class='language'>languages:</p></div>";
+				$("#accordion").append(string_accordion);
+				var j=0;
+				for(j in languages)
+				{
+					$("#div_accordion"+i).find(".language").append("<span class='languages_span'>"+languages[j]+"</span>,");
+					$("#div_accordion"+i).find(".rating").append("<span class='ratings_span'>"+ratings[j]+"</span>,");
+					
+				}
+			}
+			$( "#accordion" ).accordion();
+			
+			$('body').on('click','.edit',function(){
+				var array_index=0;		
+				var language=[];
+				var rating=[];
+				elementRef=this;
+				$("form").show();
+				$("#table_fieldset").empty();
+				
+				$( "#datepicker").datepicker({maxDate:0});
+				
+				var date=$(elementRef).parent().find(".dob").text();
+				var email=$(elementRef).parent().find(".email").text();
+				$( "#datepicker" ).datepicker("setDate",date);
+				$( "#text_email" ).val(email);
+				var id_div=$(elementRef).parent().attr("id");
+				
+				$("#"+id_div+" .languages_span").each(function(){
+					language[array_index]=$(this).text();
+					array_index++;
+				});
+				array_index=0;
+				$("#"+id_div+" .ratings_span").each(function(){
+					rating[array_index]=$(this).text();
+					array_index++;
+				});
+				var k=0;
+				for(k in language)
+				{
+					var string_table="<fieldset class='fieldset'><div id='controlgroup"+k+"'><select class='languages'>"+
+					"<option value='select one'>select one</option><option value='HTML-5'>HTML-5</option><option value='angular js'>angular js</option>"+
+					"<option value='css-3'>css-3</option><option value='javascript'>javascript</option></select><p class='alert_text' style='margin:0px' ></p>"+			
+					"<label class='labels' >Rating<span class='rating_text'></span></label>"+
+					"<p class='slider'></p></div></fieldset>";
+					$("#table_fieldset").append(string_table);
+					$("#controlgroup"+k).find(".languages").val(language[k]);
+					$("#controlgroup"+k).find(".rating_text").text(rating[k]);
+					$("#controlgroup"+k).find(".slider").slider({
+						min:0,
+						max:5,
+						value:rating[k],
+						stop: function(event,user_input ){									
+							var slidevalue=user_input.value;				
+							$(this).parent().find(".rating_text").text(slidevalue);
+						}
+					});
+					if(k==0)
+					{
+						$("#controlgroup"+k).append("<input type='button' class='addRow' value='add row'>");
+					}
+					else
+					{
+					
+					
+						$("#controlgroup"+k).append("<input type='button' class='deleteRow' value='delete'>");
+					}
+					
+				}
+				
+			});
+			$("#submit").click(function(){
+				
+				var required_flag=true;
+				$(".alert_text").text("");
+				if($("#datepicker").val()==="")
+				{
+					$("#alert_dob").text(alert_string);
+					required_flag=false;
+				}
+				if($("#text_email").val()==="")
+				{
+					$("#alert_email").text(alert_string);
+					required_flag=false;
+				}
+				else
+				{
+					var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+					if (!filter.test($("#text_email").val())) 
+					{
+						$("#alert_email").text(alert_string);
+						required_flag=false;
+					}
+				}
+				$(".languages").each(function(){
+					if($(this).val()==="select one")
+					{
+						$(this).parent().find(".alert_text").text("select language");				
+						required_flag=false;
+					}
+				});
+				if(required_flag===true)
+				{
+					var all_languages=[];
+					var count_languages=0;
+					$(elementRef).parent().find(".dob").text($("#datepicker").val());
+					$(elementRef).parent().find(".email").text($("#text_email").val());													
+					
+					$(".fieldset").each(function(){		
+						all_languages[count_languages]=$(this).find(".languages").val();
+						count_languages++;
+					});
+					var unique_languages=jQuery.unique(all_languages)
+					if(count_languages===unique_languages.length)
+					{
+						$(elementRef).parent().find(".language").empty();
+						$(elementRef).parent().find(".rating").empty();
+						$(elementRef).parent().find(".language").append("Languages:");
+						$(elementRef).parent().find(".rating").append("Ratings:");
+						$("form").hide();
+						$(".fieldset").each(function(){		
+						
+							var lang=$(this).find(".languages").val();
+							var rat=$(this).find(".slider").slider("value");						
+							if(lang == $(".fieldset").last().find(".languages").val())
+							{
+								$(elementRef).parent().find(".language").append("<span class='languages_span'>"+lang+"</span>");
+								$(elementRef).parent().find(".rating").append("<span class='ratings_span'>"+rat+"</span>");					
+							}
+							else
+							{
+								$(elementRef).parent().find(".language").append("<span class='languages_span'>"+lang+"</span>,");
+								$(elementRef).parent().find(".rating").append("<span class='ratings_span'>"+rat+"</span>,");
+							
+							}
+						});
+					}
+					else
+					{
+						$("#alert").text("there are more than one same language !!")
+					}
+					
+				}
+			});
+			$("body").on("click",".addRow",function(){
+				
+				var string_table="<fieldset class='fieldset'><div class='controlgroup"+extra_row+"'><select class='languages'>"+
+					"<option value='select one'>select one</option><option value='HTML-5'>HTML-5</option><option value='angular js'>angular js</option>"+
+					"<option value='css-3'>css-3</option><option value='javascript'>javascript</option></select><p class='alert_text' style='margin:0px' ></p>"+			
+					"<label class='labels' >Rating<span class='rating_text'>0</span></label>"+
+					"<p class='slider'></p><input type='button' class='deleteRow' value='delete'></div></fieldset>";
+					$("#table_fieldset").append(string_table);
+					$(".controlgroup"+extra_row).find(".slider").slider({
+						min:0,
+						max:5,
+						
+						stop: function(event,user_input ){									
+							var slidevalue=user_input.value;				
+							$(this).parent().find(".rating_text").text(slidevalue);
+						}
+					});
+				extra_row++;
+				
+			});
+			$("body").on("click",".deleteRow",function(){
+				$(this).parent().parent().remove();
+			});
+		});
+	</script>
+</html>

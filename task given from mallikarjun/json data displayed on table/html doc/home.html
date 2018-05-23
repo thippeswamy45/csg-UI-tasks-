@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="../css doc/style_home.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<title>home page</title>
+	<script>
+		
+		var elementRef={};
+
+		$(document).ready(function(){
+			var json=[{"date":"01-03-2018 18:35:56","opsBranch":"Developement","codeBranch":"Sprint-39_Proform_March_2018","buildNumber":"11431","environment":"McGov","abStatus":"null","cbStatus":"success"},{"date":"01-03-2018 15:09:29","opsBranch":"19-Jan-18-Sprint38-ProFormCore","codeBranch":"Sprint-37_Proform_QA","buildNumber":"13122","environment":"uat","abStatus":"null","cbStatus":"Success"},{"date":"01-03-2018 14:22:53","opsBranch":"Developement","codeBranch":"Sprint-37_Proform_QA","buildNumber":"143","environment":"uat","abStatus":"null","cbStatus":"Success"},{"date":"28-02-2018 16:33:20","opsBranch":"Local-Dev","codeBranch":"19-Jan-18-Sprint38-ProFormCore","buildNumber":"11431","environment":"qa","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:56:00","opsBranch":"Local-Dev","codeBranch":"Sprint-37_Proform_QA","buildNumber":"5756","environment":"qa","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:55:44","opsBranch":"Testing2","codeBranch":"19-Jan-18-Sprint38-ProFormCore","buildNumber":"5755","environment":"uat","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:55:27","opsBranch":"Developement","codeBranch":"Sprint-39_Proform_March_2018","buildNumber":"1234","environment":"McGov","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:55:24","opsBranch":"Developement","codeBranch":"Sprint-39_Proform_March_2018","buildNumber":"1234","environment":"McGov","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:55:17","opsBranch":"Developement","codeBranch":"Sprint-39_Proform_March_2018","buildNumber":"1234","environment":"McGov","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:51:11","opsBranch":"Developement","codeBranch":"Sprint-37_Proform_QA","buildNumber":"1234","environment":"McGov","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:50:02","opsBranch":"19-Jan-18-Sprint38-ProFormCore","codeBranch":"McGov_Proform_Dev","buildNumber":"13122","environment":"QaNew","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:47:39","opsBranch":"Local-Dev","codeBranch":"19-Jan-18-Sprint38-ProFormCore","buildNumber":"13122","environment":"dev","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:47:15","opsBranch":"Local-Dev","codeBranch":"19-Jan-18-Sprint38-ProFormCore","buildNumber":"13122","environment":"uat","abStatus":"null","cbStatus":"Success"},{"date":"27-02-2018 18:46:55","opsBranch":"Local-Dev","codeBranch":"19-Jan-18-Sprint38-ProFormCore","buildNumber":"13122","environment":"qa","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 13:01:12","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 13:01:09","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 13:01:06","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 13:01:04","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 13:00:43","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 12:59:24","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 12:58:52","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 12:54:04","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 12:10:57","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Failed"},{"date":"15-02-2018 12:08:04","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 11:59:12","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"2","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"15-02-2018 11:55:14","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"2","environment":"QA","abStatus":"null","cbStatus":"Failed"},{"date":"15-02-2018 11:54:42","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"2","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"12-02-2018 18:00:05","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"2","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"12-02-2018 17:59:23","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"1","environment":"QA","abStatus":"null","cbStatus":"success"},{"date":"12-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"5","environment":"QA","abStatus":"null","cbStatus":"Success"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Failed3"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"5","environment":"QA","abStatus":"null","cbStatus":"Failed1"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Failed2"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"5","environment":"QA","abStatus":"null","cbStatus":"Failed1"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Failed2"},{"date":"11-02-2018","opsBranch":"DEVe","codeBranch":"Testing","buildNumber":"7","environment":"QA","abStatus":"null","cbStatus":"success"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"7","environment":"QA","abStatus":"null","cbStatus":"Failed"},{"date":"11-02-2018","opsBranch":"DEVe","codeBranch":"Testing","buildNumber":"7","environment":"QA1","abStatus":"null","cbStatus":"Failed"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"6","environment":"QA","abStatus":"null","cbStatus":"success"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"5","environment":"QA","abStatus":"null","cbStatus":"Failed1"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"4","environment":"QA","abStatus":"null","cbStatus":"Failed2"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"3","environment":"QA","abStatus":"null","cbStatus":"success"},{"date":"11-02-2018","opsBranch":"DEV","codeBranch":"Testing","buildNumber":"2","environment":"QA","abStatus":"null","cbStatus":"success"},{"date":"10-02-2018","opsBranch":"Development","codeBranch":"Testing","buildNumber":"1","environment":"UAT","abStatus":"null","cbStatus":"Failed"}]
+			var row_count=json.length;
+			for(var i=0;i<row_count;i++)
+			{					
+				var date=json[i].date;
+				var opsBranch=json[i].opsBranch;
+				var codeBranch=json[i].codeBranch;
+				var buildNumber=json[i].buildNumber;
+				var environment=json[i].environment;
+				var abStatus=json[i].abStatus;
+				var cbStatus=json[i].cbStatus;
+				
+				var string_html="<tr><td class='date'>"+date+
+						   "</td><td class='opsBranch'>"+opsBranch+"</td><td class='codeBranch'>"+codeBranch+
+						   "</td><td class='buildNumber'>"+buildNumber+"</td><td class='environment'>"+environment+
+						   "</td><td class='abStatus'>"+abStatus+"</td><td class='cbStatus'>"+cbStatus+"</td></tr>";
+				$("#tone tbody").append(string_html);
+			}
+			
+				
+				
+			});
+			
+			
+			
+		
+	</script>
+	
+</head>
+<body>
+	
+		<table id="tone">
+			<thead>
+				<tr id="tr1">			
+					<th>date</th>
+					<th>opsBranch</th>
+					<th>codeBranch</th>
+					<th>buildNumber</th>
+					<th>environment</th>			
+					<th>abStatus</th>
+					<th>cbStatus</th>					
+				</tr>
+			</thead>
+			<tbody>				
+			</tbody>
+		</table>		
+</body>
+</html>

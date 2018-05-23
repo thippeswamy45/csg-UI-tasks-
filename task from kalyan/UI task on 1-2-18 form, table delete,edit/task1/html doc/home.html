@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>home page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function makeJSON(fn,ln,addr,pn,email){
+var myObject={
+"Firstname":fn,
+"Last name":ln,
+"Address":addr,
+"Phone no":pn,
+"Email":email
+};
+var myJSON=JSON.stringify(myObject);
+document.getElementById("data").innerHTML =myJSON;
+}
+
+
+</script>
+<link rel="stylesheet" href="../css doc/style_home.css">
+</head>
+<body>
+<form action="">
+  <label for="fn">Firstname<span>:</span></label>
+  <input type="text" id="text_fn" name="firstname" value="">
+  
+ <label for="ln">Lastname<span>:</span></label>
+  <input type="text" id="text_ln"  value="">
+  
+ <label for="address">Address<span >:</span></label>
+  <input type="text" id="text_address"  value="">
+ 
+ <label for="phone no">Phone no<span >:</span></label>
+  <input type="text"  id="text_pn" value="">
+  
+ <label for="email">Email<span>:</span></label>
+  <input type="email"  id="text_email" >
+  <div>
+  <input id="submit" type="button" onclick='makeJSON($("#text_fn").val(),$("#text_ln").val(),$("#text_address").val(),$("#text_pn").val(),$("#text_email").val());' value="Submit">
+  <input id="reset" type="reset"  value="Reset">
+  </div>
+  </form> 
+<p id="data"></p>
+</body>
+</html>

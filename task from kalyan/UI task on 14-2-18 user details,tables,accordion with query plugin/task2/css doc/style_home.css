@@ -1,0 +1,79 @@
+body{
+	font-size:20px;
+	border:solid black;
+	width:500px;
+	margin:auto;
+	padding:20px;
+}
+#accordion{
+	width:500px;
+	margin-right:0px;
+}
+.edit{
+	float:right;
+}
+.labels{
+	width:180px;
+	float:left;
+	margin-top:10px;	
+	text-align:left;
+	padding-right:10px;
+	clear:both;  
+	margin-left:10px;
+}
+.textbox{
+    float:left;
+	margin-top:10px;
+		
+}
+.rating_text{
+	margin-left:20px;
+}
+.slider{
+	float:left;
+	clear:both;
+	width:300px;
+	margin-left:20px;
+}
+#div_buttons{
+	clear: left;
+	margin-left:50px;
+	margin-bottom:10px;
+}
+
+#submit{
+	margin-left: 70px;
+	margin-top: 30px;
+    
+}
+fieldset{
+	width:335px;
+	float:left;
+	clear:both;
+	padding:10px;
+	height:150px;
+}
+table{
+	float:left;
+	clear:both;
+}
+.alert_text{
+	clear:both;
+	margin-left:200px;
+	padding:0px;
+	margin-bottom:0px;
+	color:red;
+}
+.addRow{	
+	position:relative;
+	top:110px;
+	left:80px;
+}
+.deleteRow{	
+	position:relative;
+	top:110px;
+	left:90px;
+}
+
+
+
